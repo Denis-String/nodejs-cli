@@ -1,0 +1,30 @@
+{
+  "name": "sisbr-node-test",
+  "version": "1.0.1",
+  "description": "Ferramenta de templates para Node.js",
+  "main": "bin/cli.js",
+  "bin": {
+    "sisbr-node-test": "./dist/bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node esbuild.mjs",
+    "postbuild": "node scripts/postbuild.js",
+    "dev": "tsx ./bin/cli.ts"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "inquirer": "^12.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^22.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.16.0",
+    "@typescript-eslint/parser": "^8.16.0",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.16.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
