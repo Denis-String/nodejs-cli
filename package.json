@@ -4,15 +4,27 @@
   "description": "Ferramenta de templates para Node.js",
   "main": "bin/cli.js",
   "bin": {
-    "sisbr-node-test": "./dist/bin/cli.js"
+    "sisbr-node-test": "./dist/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node esbuild.mjs",
+    "build": "node esbuild.config.js",
     "postbuild": "node scripts/postbuild.js",
-    "dev": "tsx ./bin/cli.ts"
+    "dev": "tsx ./src/index.ts"
   },
   "dependencies": {
+    "@babel/generator": "^7.26.3",
+    "@babel/parser": "^7.26.3",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/exporter-metrics-otlp-grpc": "^0.56.0",
+    "@opentelemetry/exporter-metrics-otlp-proto": "^0.56.0",
+    "@opentelemetry/instrumentation-fastify": "^0.43.0",
+    "@opentelemetry/instrumentation-http": "^0.56.0",
+    "@opentelemetry/node": "^0.24.0",
+    "@opentelemetry/resources": "^1.29.0",
+    "@opentelemetry/sdk-metrics": "^1.29.0",
+    "@opentelemetry/sdk-node": "^0.56.0",
+    "@opentelemetry/semantic-conventions": "^1.28.0",
     "commander": "^11.0.0",
     "inquirer": "^12.2.0"
   },

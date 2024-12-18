@@ -5,7 +5,7 @@ const FILE_NAME = '.editorconfig'
 
 export default function editorConfig({ projectPath }: { projectPath: string }) {
   try {
-    const eslintConfigPath = path.join(__dirname, FILE_NAME);
+    const eslintConfigPath = path.join(`${process.cwd()}/src/packages/editorconfig/config`, FILE_NAME);
     const projectEslintConfigPath = path.join(projectPath, FILE_NAME);
 
     if (!fs.existsSync(projectEslintConfigPath)) {

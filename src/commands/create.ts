@@ -3,26 +3,19 @@ import * as path from 'path';
 import inquirer from 'inquirer';
 import { copyTemplate } from '../utils/file';
 import implementEslint from '../packages/eslint';
-import implementEditorConfig from '../packages/editoconfig';
-import implementOpentelemetry from '../packages/opentelemetry';
+import implementEditorConfig from '../packages/editorconfig';
+import { getArchetypes } from '../utils/getArchetypes';
 
 interface CreateCommandOptions {
   archtype: string;
   projectName: string;
 }
 
-// Função principal para criar o projeto
 export const createCommand = async (archtype: string, projectName: string) => {
   try {
-    let templatePath: string;
+    if (!getArchetypes().includes(archtype)) return console.log(`${archtype} não disponível`)
 
-    if (archtype === 'mvc') {
-      templatePath = path.join(__dirname, '../templates/mvc');
-    } else {
-      console.log(`Arquétipo ${archtype} não encontrado.`);
-      return;
-    }
-
+    const templatePath = path.join(process.cwd(), `src/templates/${archtype}`);
     const projectPath = path.join(process.cwd(), projectName);
 
     if (fs.existsSync(projectPath)) {
@@ -42,13 +35,9 @@ export const createCommand = async (archtype: string, projectName: string) => {
     }
 
     copyTemplate(templatePath, projectPath);
-
-    console.log(`Projeto ${projectName} criado com o template ${archtype}`);
-
     implementEslint({ projectPath })
     implementEditorConfig({ projectPath })
-    implementOpentelemetry({ projectPath })
-
+    // implementOpentelemetry({ projectPath })
   } catch (error) {
     console.error('Erro ao criar o projeto:', error);
   }
