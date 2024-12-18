@@ -1,45 +1,38 @@
 const fs = require('fs');
 const path = require('path');
 
-// Caminhos para os diretórios de origem e destino
+// Caminhos para os diretórios de origem
 const srcDirs = ['/src/templates', '/src/packages'];
-const destDirBase = path.join(process.cwd(), 'dist');
+// Diretório de destino base
+const destDirBase = path.join(process.cwd(), 'dist/src');
 
-// Função para copiar arquivos e diretórios recursivamente
+// Função para copiar arquivos e diretórios de forma recursiva
 const copyDir = (srcDir, destDir) => {
+  // Garantir que o diretório de destino existe
   fs.mkdirSync(destDir, { recursive: true });
 
+  // Ler todos os itens dentro do diretório de origem
   fs.readdirSync(srcDir).forEach(item => {
-    const srcPath = path.join(srcDir, item);
-    const destPath = path.join(destDir, item);
+    const srcPath = path.join(srcDir, item);  // Caminho completo para o item de origem
+    const destPath = path.join(destDir, item);  // Caminho completo para o item de destino
 
     if (fs.lstatSync(srcPath).isDirectory()) {
-      fs.mkdirSync(destPath, { recursive: true });
-      // Recursivamente copiar arquivos e subdiretórios
-      fs.readdirSync(srcPath).forEach(file => {
-        const srcFile = path.join(srcPath, file);
-        const destFile = path.join(destPath, file);
-
-        if (fs.lstatSync(srcFile).isDirectory()) {
-          fs.mkdirSync(destFile, { recursive: true });
-        } else {
-          fs.copyFileSync(srcFile, destFile);
-          console.log(`Arquivo ${file} copiado com sucesso!`);
-        }
-      });
+      // Se for um diretório, copiamos os arquivos e subdiretórios de forma recursiva
+      copyDir(srcPath, destPath);
     } else {
-      // Se for um arquivo, copia diretamente
+      // Se for um arquivo, copia diretamente para o destino
       fs.copyFileSync(srcPath, destPath);
       console.log(`Arquivo ${item} copiado com sucesso!`);
     }
   });
 };
 
-// Copiar templates e package para seus respectivos destinos
+// Copiar os conteúdos de 'templates' e 'packages' para 'dist', mantendo a estrutura de pastas
 srcDirs.forEach(srcDir => {
-  const srcPath = path.join(process.cwd(), srcDir);
-  const destPath = path.join(destDirBase, srcDir);
+  const srcPath = path.join(process.cwd(), srcDir);  // Caminho absoluto para o diretório de origem
+  const destPath = path.join(destDirBase, path.basename(srcDir));  // Destino final para cada diretório (templates ou packages)
 
+  // Copiar todo o conteúdo dentro de 'templates' ou 'packages' para dentro de 'dist', mantendo a estrutura
   copyDir(srcPath, destPath);
 });
 
