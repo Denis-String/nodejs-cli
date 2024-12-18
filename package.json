@@ -1,13 +1,14 @@
 {
   "name": "node-poc-template",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Ferramenta de templates para Node.js",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist/index.js",
+    "dist/src"
   ],
   "bin": {
-    "create": "dist/index.js"
+    "node-poc-template": "index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
