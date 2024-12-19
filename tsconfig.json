@@ -109,8 +109,8 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "src/**/*.ts",
-    "src/packages/mvc/opentelemetry/config/opentelemetry.ts"
+    // "src/**/*.ts",
+    // "src/packages/mvc/opentelemetry/config/opentelemetry.ts"
   ],
-  "exclude": ["node_modules", "src/packages/**/config/*", "src/templates"]
+  "exclude": ["node_modules", "src/packages/**/config/*"]
 }

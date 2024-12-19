@@ -2,7 +2,7 @@
   "name": "nodejs-base-structure",
   "version": "1.0.0",
   "main": "index.js",
-  "sicoob-arch": "mvc",
+  "sicoob-archetype": "mvc",
   "scripts": {
     "build": "node esbuild.mjs",
     "lint": "eslint src/**/*.ts",

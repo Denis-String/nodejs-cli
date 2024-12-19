@@ -4,7 +4,7 @@ import inquirer from 'inquirer';
 import { copyTemplate } from '../utils/file';
 import implementEslint from '../packages/eslint';
 import implementEditorConfig from '../packages/editorconfig';
-import { getArchetypes } from '../utils/getArchetypes';
+import { getArchetypes } from '../utils/get-archetypes';
 
 export const createCommand = async (archtype: string, projectName: string) => {
   try {

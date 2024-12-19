@@ -1,22 +1,30 @@
 import * as fs from 'fs';
+import inquirer from 'inquirer';
 import * as path from 'path';
 
 const FILE_NAME = '.editorconfig'
 
-export default function editorConfig({ projectPath }: { projectPath: string }) {
+export default async function editorConfig({ projectPath }: { projectPath: string }) {
   try {
-    const eslintConfigPath = path.join(`${__dirname}/src/packages/editorconfig/config`, FILE_NAME);
-    const projectEslintConfigPath = path.join(projectPath, FILE_NAME);
+    const editorconfigConfigPath = path.join(`${__dirname}/src/packages/editorconfig/config`, FILE_NAME);
+    const projectEditorconfigConfigPath = path.join(projectPath, FILE_NAME);
 
-    if (!fs.existsSync(projectEslintConfigPath)) {
-      fs.copyFileSync(eslintConfigPath, projectEslintConfigPath);
-      console.log(`Arquivo ${FILE_NAME} copiado com sucesso para o projeto.`);
-    } else {
-      console.log(`Arquivo ${FILE_NAME} já existe no projeto.`);
+    if (fs.existsSync(projectEditorconfigConfigPath)) {
+      const answer = await inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'overwrite',
+          message: `O arquivo ${FILE_NAME} já existe. Deseja sobrescrevê-lo?`,
+          default: false,
+        },
+      ]);
+
+      if (!answer.overwrite) return;
     }
 
-    console.log(`${FILE_NAME} implementado com sucesso`);
+    fs.copyFileSync(editorconfigConfigPath, projectEditorconfigConfigPath);
+
   } catch (error) {
-    console.error('Erro ao configurar ESLint no projeto:', error);
+    console.error('Erro ao configurar editorconfig no projeto:', error);
   }
 }
