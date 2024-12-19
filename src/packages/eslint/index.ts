@@ -5,7 +5,7 @@ const FILE_NAME = 'eslint.config.js'
 
 export default function eslint({ projectPath }: { projectPath: string }) {
   try {
-    const eslintConfigPath = path.join(`${process.cwd()}/src/packages/eslint/config`, FILE_NAME);
+    const eslintConfigPath = path.join(`${__dirname}/src/packages/eslint/config`, FILE_NAME);
     const projectEslintConfigPath = path.join(projectPath, FILE_NAME);
 
     if (!fs.existsSync(projectEslintConfigPath)) {
@@ -24,7 +24,7 @@ export default function eslint({ projectPath }: { projectPath: string }) {
 
     const projectPackageJson = JSON.parse(fs.readFileSync(projectPackageJsonPath, 'utf-8'));
 
-    const scriptPackageJsonPath = path.join(`${process.cwd()}/src/packages/eslint/config`, 'package.json');
+    const scriptPackageJsonPath = path.join(`${__dirname}/src/packages/eslint/config`, 'package.json');
 
     const scriptPackageJson = JSON.parse(fs.readFileSync(scriptPackageJsonPath, 'utf-8'));
 

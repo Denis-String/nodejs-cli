@@ -10,8 +10,6 @@ export const createCommand = async (archtype: string, projectName: string) => {
   try {
     if (!getArchetypes().includes(archtype)) return console.log(`${archtype} não disponível`)
 
-    console.log('dirname', __dirname)
-    console.log('process.cwd()', process.cwd())
     const templatePath = path.join(__dirname, `src/templates/${archtype}`);
     const projectPath = path.join(process.cwd(), projectName);
 
