@@ -6,16 +6,11 @@ import implementEslint from '../packages/eslint';
 import implementEditorConfig from '../packages/editorconfig';
 import { getArchetypes } from '../utils/getArchetypes';
 
-interface CreateCommandOptions {
-  archtype: string;
-  projectName: string;
-}
-
 export const createCommand = async (archtype: string, projectName: string) => {
   try {
     if (!getArchetypes().includes(archtype)) return console.log(`${archtype} não disponível`)
 
-    const templatePath = path.join(process.cwd(), `src/templates/${archtype}`);
+    const templatePath = path.join(__dirname, `src/templates/${archtype}`);
     const projectPath = path.join(process.cwd(), projectName);
 
     if (fs.existsSync(projectPath)) {
@@ -37,7 +32,6 @@ export const createCommand = async (archtype: string, projectName: string) => {
     copyTemplate(templatePath, projectPath);
     implementEslint({ projectPath })
     implementEditorConfig({ projectPath })
-    // implementOpentelemetry({ projectPath })
   } catch (error) {
     console.error('Erro ao criar o projeto:', error);
   }
