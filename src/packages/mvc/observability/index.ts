@@ -51,5 +51,6 @@ export default async function observability({ projectPath }: { projectPath: stri
     const output = generator(ast, {}, fileContent);
     fs.writeFileSync(path.join(projectPath, 'src/plugins', 'initialize.ts'), output.code);
   }
+
   console.log('ast', ast)
 }

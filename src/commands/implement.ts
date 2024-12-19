@@ -1,6 +1,7 @@
 import { getPackagesByArchetype } from '../utils/get-archetype-packages';
-import implementOpentelemetry from '../packages/mvc/observability';
 import { isSicoobBoilerplateProject } from '../utils/validations';
+
+import observability from '../packages/mvc/observability';
 
 export const implementCommand = async (packageToInstall: string) => {
   try {
@@ -13,7 +14,10 @@ export const implementCommand = async (packageToInstall: string) => {
     if (!getPackagesByArchetype({ archetype }).includes(packageToInstall))
       return console.error(`${packageToInstall} não disponível para archetype ${archetype}`)
 
-    implementOpentelemetry({ projectPath: process.cwd() })
+    if (packageToInstall === 'observability') {
+      observability({ projectPath: process.cwd() })
+    }
+
   } catch (error) {
     console.error('Erro ao implementar o pacote:', error);
   }
