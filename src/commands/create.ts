@@ -11,7 +11,7 @@ import { updateJsonFile } from '../utils/update-json-file';
 
 export const createCommand = async (archtype: string, projectName: string) => {
   try {
-    if (!getArchetypes().includes(archtype)) return console.log(`${archtype} não disponível`)
+    if (!getArchetypes().includes(archtype)) return console.log(`${archtype} não disponível`);
 
     const templatePath = path.join(__dirname, `src/templates/${archtype}`);
     const projectPath = path.join(process.cwd(), projectName);
@@ -37,11 +37,11 @@ export const createCommand = async (archtype: string, projectName: string) => {
       filePath: path.join(projectPath, 'package.json'),
       key: 'name',
       newValue: projectName
-    })
-    implementEslint({ projectPath })
-    implementEditorConfig({ projectPath })
+    });
+    implementEslint({ projectPath });
+    implementEditorConfig({ projectPath });
   } catch (error) {
     console.error('Erro ao criar o projeto:', error);
-    throw error
+    throw error;
   }
 };

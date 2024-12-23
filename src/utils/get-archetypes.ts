@@ -1,6 +1,6 @@
 
-import { getFoldersName } from "./get-folders-name";
+import { getFoldersName } from './get-folders-name';
 
 export function getArchetypes() {
-  return getFoldersName({ exactlyPath: `${__dirname}/src/templates` })
+  return getFoldersName({ exactlyPath: `${__dirname}/src/templates` });
 }

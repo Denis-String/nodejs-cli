@@ -8,7 +8,7 @@ export function addEsmDefaultExport({ filePath, toExport }: { filePath: string, 
 
   const exportNode = ast.program.body.find(node => node.type === 'ExportDefaultDeclaration');
 
-  if (exportNode?.declaration?.type !== 'ArrayExpression') throw new Error(`${filePath} has not default export`)
+  if (exportNode?.declaration?.type !== 'ArrayExpression') throw new Error(`${filePath} has not default export`);
 
   exportNode.declaration.elements.push(parseExpression(toExport));
 

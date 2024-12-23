@@ -7,8 +7,8 @@ export const isSicoobBoilerplateProject = ({ projectPath }: { projectPath: strin
   if (fs.existsSync(packageJsonPath)) {
     const packageJson = JSON.parse(fs.readFileSync(path.join(projectPath, 'package.json'), 'utf8'));
 
-    return packageJson['sicoob-archetype'] ?? false
+    return packageJson['sicoob-archetype'] ?? false;
   }
 
-  return false
-}
+  return false;
+};

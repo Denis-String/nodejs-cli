@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import inquirer from 'inquirer';
 import * as path from 'path';
 
-const FILE_NAME = 'eslint.config.js'
+const FILE_NAME = 'eslint.config.mjs';
 
 export default async function eslint({ projectPath }: { projectPath: string }) {
   try {

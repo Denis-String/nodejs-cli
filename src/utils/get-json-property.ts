@@ -9,5 +9,5 @@ export function getJsonProperty({
 }) {
 
   const packageJson = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  return packageJson[property]
+  return packageJson[property];
 }
