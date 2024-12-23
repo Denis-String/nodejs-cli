@@ -5,6 +5,7 @@ import { copyTemplate } from '../utils/file';
 import implementEslint from '../packages/eslint';
 import implementEditorConfig from '../packages/editorconfig';
 import { getArchetypes } from '../utils/get-archetypes';
+import { updateJsonFile } from '../utils/update-json-file';
 
 export const createCommand = async (archtype: string, projectName: string) => {
   try {
@@ -30,9 +31,15 @@ export const createCommand = async (archtype: string, projectName: string) => {
     }
 
     copyTemplate(templatePath, projectPath);
+    updateJsonFile({
+      filePath: path.join(projectPath, 'package.json'),
+      key: 'name',
+      newValue: projectName
+    })
     implementEslint({ projectPath })
     implementEditorConfig({ projectPath })
   } catch (error) {
     console.error('Erro ao criar o projeto:', error);
+    throw error
   }
 };
