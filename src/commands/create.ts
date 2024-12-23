@@ -1,9 +1,11 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import inquirer from 'inquirer';
-import { copyTemplate } from '../utils/file';
+
 import implementEslint from '../packages/eslint';
 import implementEditorConfig from '../packages/editorconfig';
+
+import { copyTemplate } from '../utils/file';
 import { getArchetypes } from '../utils/get-archetypes';
 import { updateJsonFile } from '../utils/update-json-file';
 

@@ -1,8 +1,9 @@
-import { isSicoobBoilerplateProject } from '../utils/validations';
 import * as path from 'path';
 
-import { getJsonProperty } from '../utils/get-json-property';
 import implementPackages from '../packages'
+
+import { isSicoobBoilerplateProject } from '../utils/validations';
+import { getJsonProperty } from '../utils/get-json-property';
 
 export const implementCommand = async (packageToInstall: string) => {
   try {
