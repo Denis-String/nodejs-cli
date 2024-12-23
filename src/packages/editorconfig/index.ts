@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import inquirer from 'inquirer';
 import * as path from 'path';
 
-const FILE_NAME = '.editorconfig'
+const FILE_NAME = '.editorconfig';
 
 export default async function editorConfig({ projectPath }: { projectPath: string }) {
   try {

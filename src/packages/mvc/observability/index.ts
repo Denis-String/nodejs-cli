@@ -18,15 +18,15 @@ export default async function observability({ projectPath, projectName }: { proj
   addJsonDependencies({
     newDependenciesPath: `${__dirname}/src/packages/mvc/observability/config`,
     oldDependenciesPath: projectPath
-  })
+  });
 
   addEsmImport({
-    toImport: `import { initializeMetrics } from './observability';`,
+    toImport: 'import { initializeMetrics } from \'./observability\';',
     filePath: path.join(projectPath, 'src/plugins', 'initialize.ts'),
-  })
+  });
 
   addEsmDefaultExport({
     toExport: 'initializeMetrics',
     filePath: path.join(projectPath, 'src/plugins', 'initialize.ts'),
-  })
+  });
 }

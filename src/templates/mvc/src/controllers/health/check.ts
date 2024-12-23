@@ -1,6 +1,6 @@
-import { FastifyRequest } from "fastify";
-import healthCheck from "../../services/health/check";
+// import { FastifyRequest } from 'fastify';
+import healthCheck from '../../services/health/check';
 
-export function healthCheckHandler(request: FastifyRequest) {
-  return healthCheck(request)
+export function healthCheckHandler(/* request: FastifyRequest */) {
+  return healthCheck(/* request */);
 }

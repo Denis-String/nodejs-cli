@@ -1,22 +1,22 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-nocheck
+
 import initialize from './plugins/initialize';
 
 import routes from './routes/register';
-import middlewares from './middlewares/register'
-import plugins from './plugins/register'
+import middlewares from './middlewares/register';
+import plugins from './plugins/register';
 
 import Fastify from 'fastify';
 
 async function startServer() {
-  // @ts-ignore
   for (const init of initialize) await init();
 
   const server = Fastify({ logger: true });
 
-  routes.forEach((route) => route(server))
-  // @ts-ignore
-  middlewares.forEach((middleware) => middleware(server))
-  // @ts-ignore
-  plugins.forEach((plugin) => plugin(server))
+  routes.forEach((route) => route(server));
+  middlewares.forEach((middleware) => middleware(server));
+  plugins.forEach((plugin) => plugin(server));
 
   server.listen({ port: 3000 }, (err, address) => {
     if (err) {

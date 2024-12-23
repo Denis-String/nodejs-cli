@@ -23,3 +23,4 @@ const sdk = new NodeSDK({
 process.on('beforeExit', async () => await sdk.shutdown());
 
 export const initializeMetrics = async () => sdk.start();
+

@@ -16,15 +16,15 @@ export default async function observability({ projectPath }: { projectPath: stri
   addJsonDependencies({
     newDependenciesPath: `${__dirname}/src/packages/mvc/cors/config`,
     oldDependenciesPath: projectPath
-  })
+  });
 
   addEsmImport({
-    toImport: `import { cors } from './cors';`,
+    toImport: 'import { cors } from \'./cors\';',
     filePath: path.join(projectPath, 'src/middlewares', 'register.ts'),
-  })
+  });
 
   addEsmDefaultExport({
     toExport: 'cors',
     filePath: path.join(projectPath, 'src/middlewares', 'register.ts'),
-  })
+  });
 }
