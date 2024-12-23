@@ -4,6 +4,7 @@ import * as path from 'path';
 import { addJsonDependencies } from '../../../utils/add-json-dependencies';
 import { addEsmImport } from '../../../utils/add-esm-import';
 import { addEsmDefaultExport } from '../../../utils/add-esm-default-export';
+import { execSync } from 'child_process';
 
 const FILE_NAME = 'observability.ts';
 
@@ -29,4 +30,6 @@ export default async function observability({ projectPath, projectName }: { proj
     toExport: 'initializeMetrics',
     filePath: path.join(projectPath, 'src/plugins', 'initialize.ts'),
   });
+
+  execSync('npm install', { encoding: 'utf-8', cwd: projectPath });
 }
