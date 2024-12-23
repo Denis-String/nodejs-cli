@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import inquirer from 'inquirer';
 import * as path from 'path';
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
 
 const FILE_NAME = 'eslint.config.mjs';
 
@@ -42,7 +42,10 @@ export default async function eslint({ projectPath }: { projectPath: string }) {
 
     fs.writeFileSync(projectPackageJsonPath, JSON.stringify(projectPackageJson, null, 2));
 
-    execSync('npm install', { encoding: 'utf-8', cwd: projectPath });
+    spawnSync('npm', ['install'], {
+      stdio: 'inherit',
+      cwd: projectPath
+    });
 
   } catch (error) {
     console.error('Erro ao configurar ESLint no projeto:', error);
