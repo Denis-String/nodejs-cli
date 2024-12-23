@@ -1,9 +1,9 @@
-const esbuild = require('esbuild');
+import * as esbuild from 'esbuild';
 
 esbuild.build({
-  entryPoints: ['./src/index.ts'], // Caminho do seu arquivo principal
-  bundle: true, // Habilita o bundling (empacotamento)
-  minify: false, // Opcional: minifica o código
-  platform: 'node', // Indica que é para um ambiente Node.js
-  outfile: 'dist/index.js', // Arquivo de saída do bundle
-}).catch(() => process.exit(1));
+  entryPoints: ['./src/index.ts'],
+  bundle: true,
+  minify: false,
+  platform: 'node',
+  outfile: 'dist/index.js',
+});
