@@ -9,7 +9,7 @@ const sdk = new NodeSDK({
   serviceName: '{{serviceName}}',
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({ url: 'http://localhost:4317' }),
-    exportIntervalMillis: 10000,
+    exportIntervalMillis: 30000
   }),
   traceExporter: new OTLPTraceExporter({
     url: 'http://localhost:4317',
@@ -23,4 +23,3 @@ const sdk = new NodeSDK({
 process.on('beforeExit', async () => await sdk.shutdown());
 
 export const initializeMetrics = async () => sdk.start();
-
