@@ -6,7 +6,7 @@ import { NodeSDK } from '@opentelemetry/sdk-node';
 import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 
 const sdk = new NodeSDK({
-  serviceName: 'nodejs-base-structure',
+  serviceName: '{{serviceName}}',
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({ url: 'http://localhost:4317' }),
     exportIntervalMillis: 10000,

@@ -7,11 +7,13 @@ import { addEsmDefaultExport } from '../../../utils/add-esm-default-export';
 
 const FILE_NAME = 'observability.ts';
 
-export default async function observability({ projectPath }: { projectPath: string }) {
-  const corsConfigPath = path.join(`${__dirname}/src/packages/mvc/observability/config`, FILE_NAME);
-  const projectConfigPath = path.join(`${projectPath}/src/plugins`, FILE_NAME);
+export default async function observability({ projectPath, projectName }: { projectPath: string, projectName: string }) {
+  const configPath = path.join(`${__dirname}/src/packages/mvc/observability/config`, FILE_NAME);
+  const userProjectPath = path.join(`${projectPath}/src/plugins`, FILE_NAME);
 
-  fs.copyFileSync(corsConfigPath, projectConfigPath);
+  const fileContent = fs.readFileSync(configPath, 'utf8');
+  const modifiedContent = fileContent.replace(/{{serviceName}}/g, projectName);
+  fs.writeFileSync(userProjectPath, modifiedContent, 'utf8');
 
   addJsonDependencies({
     newDependenciesPath: `${__dirname}/src/packages/mvc/observability/config`,
