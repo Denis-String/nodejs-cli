@@ -4,7 +4,6 @@ import * as path from 'path';
 import { addJsonDependencies } from '../../../utils/add-json-dependencies';
 import { addEsmImport } from '../../../utils/add-esm-import';
 import { addEsmDefaultExport } from '../../../utils/add-esm-default-export';
-import { spawnSync } from 'child_process';
 
 const FILE_NAME = 'observability.ts';
 
@@ -31,8 +30,8 @@ export default async function observability({ projectPath, projectName }: { proj
     filePath: path.join(projectPath, 'src/plugins', 'initialize.ts'),
   });
 
-  spawnSync('npm', ['install'], {
-    stdio: 'inherit',
-    cwd: projectPath
-  });
+  // spawnSync('npm', ['install'], {
+  //   stdio: 'inherit',
+  //   cwd: projectPath
+  // });
 }
