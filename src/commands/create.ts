@@ -38,6 +38,7 @@ export const createCommand = async (archtype: string, projectName: string) => {
       key: 'name',
       newValue: projectName
     });
+
     implementEslint({ projectPath });
     implementEditorConfig({ projectPath });
   } catch (error) {
