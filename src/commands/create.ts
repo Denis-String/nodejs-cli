@@ -8,7 +8,7 @@ import implementGitignore from '../packages/gitignore';
 
 import { copyTemplate } from '../utils/file';
 import { getArchetypes } from '../utils/get-archetypes';
-import { updateJsonFile } from '../utils/update-json-file';
+import { updateJsonFile } from '../utils/json';
 
 export const createCommand = async (archtype: string, projectName: string) => {
   try {

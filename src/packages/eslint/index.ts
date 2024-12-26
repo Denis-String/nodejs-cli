@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import inquirer from 'inquirer';
 import * as path from 'path';
-import { addJsonDependencies } from '../../utils/add-json-dependencies';
+import { addJsonDependencies } from '../../utils/json';
 
 const FILE_NAME = 'eslint.config.mjs';
 

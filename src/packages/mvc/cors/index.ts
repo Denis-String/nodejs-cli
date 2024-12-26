@@ -1,9 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { addJsonDependencies } from '../../../utils/add-json-dependencies';
-import { addEsmImport } from '../../../utils/add-esm-import';
-import { addEsmDefaultExport } from '../../../utils/add-esm-default-export';
+import { addJsonDependencies } from '../../../utils/json';
+import { addEsmImport, addEsmDefaultExport } from '../../../utils/esm';
 
 const FILE_NAME = 'cors.ts';
 
