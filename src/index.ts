@@ -21,7 +21,7 @@ program
   });
 
 program
-  .command('implement <package>')
+  .command('implement')
   .description('Implementa um pacote no projeto existente')
   .requiredOption('--package <package>', 'Pacote a ser implementado')
   .action((options) => {
