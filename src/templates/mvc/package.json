@@ -8,7 +8,7 @@
     "lint": "eslint src/**/*.ts",
     "test": "jest",
     "coverage": "jest --coverage",
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx watch --env-file=.env src/server.ts"
   },
   "engines": {
     "node": ">=22.0.0"
