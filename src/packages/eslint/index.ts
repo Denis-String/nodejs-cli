@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import inquirer from 'inquirer';
 import * as path from 'path';
+import { addJsonDependencies } from '../../utils/add-json-dependencies';
 
 const FILE_NAME = 'eslint.config.mjs';
 
@@ -24,22 +25,7 @@ export default async function eslint({ projectPath }: { projectPath: string }) {
 
     fs.copyFileSync(eslintConfigPath, projectEslintConfigPath);
 
-    const projectPackageJsonPath = path.join(projectPath, 'package.json');
-
-    const projectPackageJson = JSON.parse(fs.readFileSync(projectPackageJsonPath, 'utf-8'));
-
-    const scriptPackageJsonPath = path.join(`${__dirname}/src/packages/eslint/config`, 'package.json');
-
-    const scriptPackageJson = JSON.parse(fs.readFileSync(scriptPackageJsonPath, 'utf-8'));
-
-    const mergedDevDependencies = {
-      ...projectPackageJson.devDependencies,
-      ...scriptPackageJson.devDependencies,
-    };
-
-    projectPackageJson.devDependencies = mergedDevDependencies;
-
-    fs.writeFileSync(projectPackageJsonPath, JSON.stringify(projectPackageJson, null, 2));
+    addJsonDependencies({ newDependenciesPath: eslintConfigPath, oldDependenciesPath: projectEslintConfigPath });
 
     // spawnSync('npm', ['install'], {
     //   stdio: 'inherit',
