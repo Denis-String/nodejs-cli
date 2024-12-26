@@ -13,7 +13,7 @@ program
 program
   .command('create')
   .description('Cria um novo projeto com o boilerplate especificado')
-  .requiredOption('--arch <arch>', 'Tipo de boilerplate a ser usado')
+  .requiredOption('--arch <arch>', 'Arquitetura a ser usada')
   .requiredOption('--projectName <projectName>', 'Nome do projeto a ser criado')
   .action((options) => {
     const { arch, projectName } = options;
@@ -26,7 +26,7 @@ program
   .requiredOption('--package <package>', 'Pacote a ser implementado')
   .action((options) => {
     const { package: packageToInstall } = options;
-    implementCommand(packageToInstall)
+    implementCommand(packageToInstall);
   });
 
 program.parse(process.argv);
