@@ -7,14 +7,14 @@ import implementEditorConfig from '../packages/editorconfig';
 import implementGitignore from '../packages/gitignore';
 
 import { copyTemplate } from '../utils/file';
-import { getArchetypes } from '../utils/get-archetypes';
+import { getArchetypes } from '../utils/archetype';
 import { updateJsonFile } from '../utils/json';
 
-export const createCommand = async (archtype: string, projectName: string) => {
+export const createCommand = async (archetype: string, projectName: string) => {
   try {
-    if (!getArchetypes().includes(archtype)) return console.log(`${archtype} não disponível`);
+    if (!getArchetypes().includes(archetype)) return console.log(`${archetype} não disponível`);
 
-    const templatePath = path.join(__dirname, `src/templates/${archtype}`);
+    const templatePath = path.join(__dirname, `src/templates/${archetype}`);
     const projectPath = path.join(process.cwd(), projectName);
 
     if (fs.existsSync(projectPath)) {
