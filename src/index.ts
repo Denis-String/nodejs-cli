@@ -11,13 +11,22 @@ program
   .description('CLI para gerenciar boilerplates');
 
 program
-  .command('create <archtype> <projectName>')
+  .command('create')
   .description('Cria um novo projeto com o boilerplate especificado')
-  .action(createCommand);
+  .requiredOption('--arch <arch>', 'Tipo de boilerplate a ser usado')
+  .requiredOption('--projectName <projectName>', 'Nome do projeto a ser criado')
+  .action((options) => {
+    const { arch, projectName } = options;
+    createCommand(arch, projectName);
+  });
 
 program
   .command('implement <package>')
   .description('Implementa um pacote no projeto existente')
-  .action(implementCommand);
+  .requiredOption('--package <package>', 'Pacote a ser implementado')
+  .action((options) => {
+    const { package: packageToInstall } = options;
+    implementCommand(packageToInstall)
+  });
 
 program.parse(process.argv);
