@@ -24,5 +24,6 @@ export const implementCommand = async (packageToInstall: string) => {
 
   } catch (error) {
     console.error('Erro ao implementar o pacote:', error);
+    throw error;
   }
 };

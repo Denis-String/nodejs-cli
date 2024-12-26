@@ -48,5 +48,6 @@ export default async function eslint({ projectPath }: { projectPath: string }) {
 
   } catch (error) {
     console.error('Erro ao configurar ESLint no projeto:', error);
+    throw error;
   }
 }

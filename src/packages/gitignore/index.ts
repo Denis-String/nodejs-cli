@@ -25,5 +25,6 @@ export default async function implement({ projectPath }: { projectPath: string }
     fs.copyFileSync(configPath, projectFile);
   } catch (error) {
     console.error('Erro ao configurar gitignore no projeto:', error);
+    throw error;
   }
 }

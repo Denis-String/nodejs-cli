@@ -26,5 +26,6 @@ export default async function editorConfig({ projectPath }: { projectPath: strin
 
   } catch (error) {
     console.error('Erro ao configurar editorconfig no projeto:', error);
+    throw error;
   }
 }
