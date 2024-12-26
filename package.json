@@ -1,13 +1,11 @@
 {
   "name": "node-poc-template",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "Ferramenta de templates para Node.js",
   "main": "dist/index.js",
   "files": [
     "dist/index.js",
     "dist/src",
-    "dist/templates/*/.env",
-    "dist/templates/*/.gitignore"
   ],
   "bin": {
     "node-poc-template": "dist/index.js"
