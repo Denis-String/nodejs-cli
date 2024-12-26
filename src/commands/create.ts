@@ -4,6 +4,7 @@ import inquirer from 'inquirer';
 
 import implementEslint from '../packages/eslint';
 import implementEditorConfig from '../packages/editorconfig';
+import implementGitignore from '../packages/gitignore';
 
 import { copyTemplate } from '../utils/file';
 import { getArchetypes } from '../utils/get-archetypes';
@@ -41,6 +42,7 @@ export const createCommand = async (archtype: string, projectName: string) => {
 
     implementEslint({ projectPath });
     implementEditorConfig({ projectPath });
+    implementGitignore({ projectPath });
   } catch (error) {
     console.error('Erro ao criar o projeto:', error);
     throw error;
