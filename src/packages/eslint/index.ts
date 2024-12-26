@@ -25,7 +25,10 @@ export default async function eslint({ projectPath }: { projectPath: string }) {
 
     fs.copyFileSync(eslintConfigPath, projectEslintConfigPath);
 
-    addJsonDependencies({ newDependenciesPath: eslintConfigPath, oldDependenciesPath: projectEslintConfigPath });
+    addJsonDependencies({
+      newDependenciesPath: `${__dirname}/src/packages/eslint/config`,
+      oldDependenciesPath: projectEslintConfigPath
+    });
 
     // spawnSync('npm', ['install'], {
     //   stdio: 'inherit',
