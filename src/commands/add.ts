@@ -5,7 +5,7 @@ import implementPackages from '../packages';
 import { isSicoobBoilerplateProject } from '../validations/is-sicoob-project';
 import { getJsonProperty } from '../utils/json';
 
-export const implementCommand = async (packageToInstall: string) => {
+export const addCommand = async (packageToInstall: string) => {
   try {
     const PROJECT_PATH = process.cwd();
     const PROJECT_NAME = getJsonProperty({ filePath: path.join(PROJECT_PATH, 'package.json'), property: 'name' });

@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import * as path from 'path';
 import inquirer from 'inquirer';
 
@@ -10,7 +9,7 @@ import { copyTemplate } from '../utils/file';
 import { getArchetypes } from '../utils/archetype';
 import { updateJsonFile } from '../utils/json';
 
-export const createCommand = async (archetype: string, projectName: string) => {
+export const initCommand = async (archetype: string, projectName: string) => {
   try {
     if (!getArchetypes().includes(archetype)) return console.log(`${archetype} não disponível`);
 

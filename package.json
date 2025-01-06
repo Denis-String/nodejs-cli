@@ -1,6 +1,6 @@
 {
-  "name": "node-poc-template",
-  "version": "1.0.25",
+  "name": "sisbr-node",
+  "version": "0.1.0",
   "description": "Ferramenta de templates para Node.js",
   "main": "dist/index.js",
   "files": [
@@ -8,7 +8,7 @@
     "dist/src"
   ],
   "bin": {
-    "node-poc-template": "dist/index.js"
+    "sisbr": "dist/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
